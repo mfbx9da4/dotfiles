@@ -1,65 +1,81 @@
-# Path to your oh-my-zsh configuration.
+# -------------------------------------------------------------------
+# Things i will forget
+# -------------------------------------------------------------------
+alias my-ip="/sbin/ifconfig -a | grep 'inet addr'"
+alias pretty="echo '| python -mjson.tool'"
+alias ubuntu-version="lsb_release -a"
+alias grep-pid="sudo ps -ef | grep "
+alias rename-and-replace-prefix="echo rename s/^flag_/newprefix_/ * ;"
+alias mount-windows-partition="sudo mkdir /media/Windows-8; sudo mount /dev/sda1 /media/Windows-8"
+alias tv-dir="cd /media/Windows-8/Users/David/Pictures/tv"
+
+# -------------------------------------------------------------------
+# zsh and oh-my-zsh
+# -------------------------------------------------------------------
 ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
 ZSH_THEME="bira"
 plugins=(colored-man npm pep8 pip copyfile cp)
 source $ZSH/oh-my-zsh.sh
 
-alias pbcopy='xsel --clipboard --input'
-alias pbpaste='xsel --clipboard --output'
-
+# -------------------------------------------------------------------
+# Init
+# -------------------------------------------------------------------
 cd code
-
 # run z script
 . ~/z.sh
+echo "Did you know that:"; whatis $(ls /bin | shuf -n 1)
+# syntax highlighting
+source /home/da/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# -------------------------------------------------------------------
+# Utils
+# -------------------------------------------------------------------
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
 function server() {
         local port="${1:-8000}"
         google-chrome "http://localhost:${port}/"
         ipython -m SimpleHTTPServer "$port"
 }
-
-echo "Did you know that:"; whatis $(ls /bin | shuf -n 1)
-
-function posts () {subl ~/code/github-io/_drafts/$1}
-
-alias s="subl"
-alias ubuntu-version="lsb_release -a"
-alias grep-pid="sudo ps -ef | grep "
-alias rename-and-replace-prefix="echo 'rename \'s/^flag_/newprefix_/\' *' "
-alias mount-windows-partition="sudo mkdir /media/Windows-8; sudo mount /dev/sda1 /media/Windows-8"
-alias tv-dir="cd /media/Windows-8/Users/David/Pictures/tv"
-alias naut="nautilus ."
 alias php-local-server="php -S localhost:8080 -t "
-alias .zshrc="subl ~/.zshrc"
-alias defaults-modify="sudo subl /usr/share/applications/defaults.list"
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# edit blog posts
+function posts () {subl ~/code/github-io/_drafts/$1}
+alias naut="nautilus ."
 alias ls="ls --color=always"
 alias -s html=google-chrome
+alias please="sudo"
+alias .zshrc="subl ~/.zshrc"
+alias defaults-modify="sudo subl /usr/share/applications/defaults.list"
+
+# -------------------------------------------------------------------
+# Sublime
+# -------------------------------------------------------------------
+alias s="subl"
+alias snippets="subl /home/da/.config/sublime-text-3/Packages/User"
+alias subl-config="subl /home/da/.config/sublime-text-3"
+
+# -------------------------------------------------------------------
+# Package management
+# -------------------------------------------------------------------
 alias apgi="sudo apt-get install"
 alias apgu="sudo apt-get update"
 alias apgup="sudo apt-get upgrade"
 alias apgr="sudo apt-get remove"
 alias pipi="sudo pip install"
-alias please="sudo"
-alias snippets="subl /home/da/.config/sublime-text-3/Packages/User"
-alias subl-config="subl /home/da/.config/sublime-text-3"
-alias my-ip="/sbin/ifconfig -a | grep 'inet addr'"
+
+# -------------------------------------------------------------------
+# Chaordic
+# -------------------------------------------------------------------
 alias elasticsearch-start="~/code/elasticsearch-1.1.1/bin/elasticsearch"
-alias pretty="echo '| python -mjson.tool'"
-
-
+alias docker-build="sudo docker build . -t NAME_OF_BUILD"
+alias docker-run="sudo docker run -p 80:80 -p 9200:9200 -it -v /home/da/code/chaordic/search:/home/search/live NAME_OF_BUILD /bin/bash"
 
 # -------------------------------------------------------------------
 # Git aliases
 # -------------------------------------------------------------------
-
 git config --global credential.helper "cache --timeout=900000000"
 alias commit="git commit -am "
 
@@ -85,6 +101,7 @@ alias gr='git rm'
 alias gta='git tag -a -m'
 alias gf='git reflog'
 alias git-last-change='git diff HEAD^^'
+alias git-reset-head='git reset --soft HEAD^'
 alias git-track-new-branch='echo "git fetch; git branch --track branch-name origin/branch-name"'
 
 # leverage an alias from the ~/.gitconfig
@@ -93,7 +110,9 @@ alias glg1='git lg1'
 alias glg2='git lg2'
 alias glg='git lg'
 
-
+# -------------------------------------------------------------------
+# More zsh
+# -------------------------------------------------------------------
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
