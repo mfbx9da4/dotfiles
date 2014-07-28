@@ -8,6 +8,16 @@ alias grep-pid="sudo ps -ef | grep "
 alias rename-and-replace-prefix="echo rename s/^flag_/newprefix_/ * ;"
 alias mount-windows-partition="sudo mkdir /media/Windows-8; sudo mount /dev/sda1 /media/Windows-8"
 alias tv-dir="cd /media/Windows-8/Users/David/Pictures/tv"
+alias how-to-use-awk="git diff master --stat | grep -v '37\|config' | awk '{print $1}' | while read arq; do echo $arq foi lido; done"
+alias killall-process-on-machine-apart-from-bash="ps -ef | grep -v 'UID\|bash\|ps' | awk '{print $2}' | while read arq; do kill "$arq"; done"
+
+# -------------------------------------------------------------------
+# Chaordic
+# -------------------------------------------------------------------
+alias elasticsearch-start="~/code/elasticsearch-1.1.1/bin/elasticsearch"
+alias docker-build="sudo docker build . -t NAME_OF_BUILD"
+alias docker-run="sudo docker run -p 80:80 -p 9200:9200 -it -v /home/da/code/chaordic/search:/home/search/live NAME_OF_BUILD /bin/bash"
+alias start-homolog-run="/bin/start-homolog.sh > /tmp/start-homolog.log | grep -v '\[etcd\[' | grep -v 'Key not found'"
 
 # -------------------------------------------------------------------
 # zsh and oh-my-zsh
@@ -42,7 +52,7 @@ function server() {
 }
 alias php-local-server="php -S localhost:8080 -t "
 # edit blog posts
-function posts () {subl ~/code/github-io/_drafts/$1}
+function posts () {subl -a ~/code/mfbx9da4.github.io/_drafts/$1}
 alias naut="nautilus ."
 alias ls="ls --color=always"
 alias -s html=google-chrome
@@ -64,19 +74,16 @@ alias apgi="sudo apt-get install"
 alias apgu="sudo apt-get update"
 alias apgup="sudo apt-get upgrade"
 alias apgr="sudo apt-get remove"
+alias apcs="sudo apt-cache show"
 alias pipi="sudo pip install"
-
-# -------------------------------------------------------------------
-# Chaordic
-# -------------------------------------------------------------------
-alias elasticsearch-start="~/code/elasticsearch-1.1.1/bin/elasticsearch"
-alias docker-build="sudo docker build . -t NAME_OF_BUILD"
-alias docker-run="sudo docker run -p 80:80 -p 9200:9200 -it -v /home/da/code/chaordic/search:/home/search/live NAME_OF_BUILD /bin/bash"
 
 # -------------------------------------------------------------------
 # Git aliases
 # -------------------------------------------------------------------
 git config --global credential.helper "cache --timeout=900000000"
+alias git-set-credentials='git config --global user.email "david.adler@chaordicsystems.com"; git config --global user.name "David Adler"'
+alias git-set-credentials='git config --global user.email "dalberto.adler@gmail.com"; git config --global user.name "David Adler"'
+alias git-push-set-upstream-origin='`git push 2>&1 | grep git`'
 alias commit="git commit -am "
 
 alias ga='git add -A :/'
