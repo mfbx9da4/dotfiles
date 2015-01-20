@@ -27,19 +27,19 @@ ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
-ZSH_THEME="bira"
+ZSH_THEME="bira-modified"
 plugins=(colored-man npm pep8 pip copyfile cp)
 source $ZSH/oh-my-zsh.sh
 
 # -------------------------------------------------------------------
 # Init
 # -------------------------------------------------------------------
-cd code
 # run z script
 . ~/z.sh
-echo "Did you know that:"; whatis $(ls /bin | shuf -n 1)
 # syntax highlighting
-source /home/da/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /home/da/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+alias sourcezshrc="source ~/.zshrc"
+alias sourcebashrc="source ~/.bashrc"
 
 # -------------------------------------------------------------------
 # Utils
