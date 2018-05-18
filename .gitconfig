@@ -1,0 +1,11 @@
+[credential]
+	helper = cache --timeout=900000000
+[user]
+	name = David Adler
+	email = dalberto.adler@gmail.com
+[push]
+	default = simple
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
