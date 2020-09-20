@@ -1,157 +1,111 @@
-export EDITOR='vim'
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# -------------------------------------------------------------------
-# zsh and oh-my-zsh
-# -------------------------------------------------------------------
+# Path to your oh-my-zsh installation.
+export ZSH="/Users/da/.oh-my-zsh"
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-export ZSH=/Users/DavidAdler/.oh-my-zsh
-ZSH_THEME="bira"
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="aussiegeek"
 
-# User configuration
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  colored-man
-  npm
-  pep8
-  pip
-  copyfile
-  cp
-  git
-  nvm # very slow to load
+    git
+    nvm
+    zsh-nvm
+    ssh-agent
+    zsh-z
 )
+
 source $ZSH/oh-my-zsh.sh
 
-# -------------------------------------------------------------------
-# Path
-# -------------------------------------------------------------------
-
-# export PATH="/usr/lib/lightdm/lightdm"
-# export PATH=$PATH:/usr/local/sbin
-# export PATH=$PATH:/usr/local/bin
-# export PATH=$PATH:/usr/sbin
-# export PATH=$PATH:/usr/bin
-# export PATH=$PATH:/sbin
-# export PATH=$PATH:/bin
-# export PATH=$PATH:/usr/games
-# export PATH=$PATH:/usr/local/games
-# export PATH=$PATH:/home/da/adt-bundle-linux-x86_64-20131030/sdk/tools/
-# export PATH=$PATH:/home/da/Dropbox/programming/misc/git-sub-dir/
-# export PATH=$PATH:/home/da/google_appengine/
-# export PATH=$PATH:/home/da/google_appengine/
-# export PATH=$PATH:/usr/local/lib/node_modules/karma/bin/
-# export PATH=$PATH:/usr/local/lib/node_modules
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-export MANPATH="/usr/local/man:$MANPATH"
-
-
-# -------------------------------------------------------------------
-# run z script
-# -------------------------------------------------------------------
-. ~/z.sh
-
-# -------------------------------------------------------------------
-# Utils
-# -------------------------------------------------------------------
-
-alias python-local-server="python -m SimpleHTTPServer "
-alias php-local-server="php -S localhost:8080 -t "
-
-alias .zshrc="subl ~/.zshrc"
 alias sourcezshrc="source ~/.zshrc"
-alias vhosts="sudo vim /etc/hosts"
+
 function trash() {mv $1 ~/.Trash/}
-
-# -------------------------------------------------------------------
-# Sublime
-# -------------------------------------------------------------------
-alias s="subl"
-alias snippets="subl /home/da/.config/sublime-text-3/Packages/User"
-alias subl-config="subl /home/da/.config/sublime-text-3" # linux
-alias subl-config="subl ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/"
-
-# -------------------------------------------------------------------
-# Linux Package management
-# -------------------------------------------------------------------
-# alias apgi="sudo apt-get install"
-# alias apgu="sudo apt-get update"
-# alias apgup="sudo apt-get upgrade"
-# alias apgr="sudo apt-get remove"
-# alias apcs="sudo apt-cache show"
-# alias pipi="sudo pip install"
-
-# -------------------------------------------------------------------
-# Git aliases
-# -------------------------------------------------------------------
-git config --global credential.helper "cache --timeout=900000000"
-alias git-set-credentials='git config --global user.email "dalberto.adler@gmail.com"; git config --global user.name "mfbx9da4"'
-
-alias ga='git add'
-alias gp='git push'
-alias gpo='git push origin'
-alias gpm='git push origin master'
-alias gpom='git push origin master'
-alias gph='git push heroku'
-alias gphm='git push heroku master'
-alias gl='git log'
-alias gs='git status'
-alias gd='git diff'
-alias gm='git commit -m'
-alias gam='git commit -am'
-alias gb='git branch'
-alias gc='git checkout'
-alias gra='git remote add'
-alias grr='git remote rm'
-alias gpu='git pull'
-alias gcl='git clone'
-alias gr='git rm'
-alias gta='git tag -a -m'
-alias gf='git reflog'
-alias gtree='git log --graph --decorate --pretty=oneline --abbrev-commit'
-alias git-last-change='git diff HEAD^^'
-alias git-reset-head='git reset --soft HEAD^'
-alias git-track-new-branch='echo "git fetch; git branch --track branch-name origin/branch-name"'
 
 # User configuration
 
-# start ssh agent in background
-# eval "$(ssh-agent -s)"
+# export MANPATH="/usr/local/man:$MANPATH"
 
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
 
-# -------------------------------------------------------------------
-# Java
-# -------------------------------------------------------------------
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
-# java
-# export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
 
-# # Apache Ant
-# export ANT_HOME="/Users/da/apache-ant-1.10.1"
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# export PATH="$PATH:$ANT_HOME/bin"
-
-# junit
-# export JUNIT_HOME="$HOME/java"
-# export PATH="$PATH:$JUNIT_HOME"
-# export CLASSPATH="$CLASSPATH:$JUNIT_HOME/junit-4.12.jar:$JUNIT_HOME/hamcrest-core-1.3.jar"
-
-# Add ~/algs4/bin to the PATH
-# export PATH=$PATH:$HOME/algs4/bin
-
-# -------------------------------------------------------------------
-# NVM
-# -------------------------------------------------------------------
-
-# alternative to zsh plugin
-alias nvminit='. ~/.nvm/nvm.sh'
-
-# -------------------------------------------------------------------
-# Go
-# -------------------------------------------------------------------
-
-export GOPATH=$HOME/Go
-export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
-
-
+alias gs='git status'%
