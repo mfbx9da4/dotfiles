@@ -1,0 +1,5 @@
+brew "tig"
+brew "htop"
+# cask "hiddenbar"
+# cask "stats"
+# cask "google-chrome"
