@@ -11,3 +11,5 @@
 	required = true
 [alias]
     merge = merge --no-edit
+[branch]
+    sort = -committerdate
