@@ -1,5 +1,6 @@
 brew "tig"
 brew "htop"
+brew "pyenv"
 # cask "hiddenbar"
 # cask "stats"
 # cask "google-chrome"
